@@ -1,63 +1,52 @@
-###############################################################################
-# Set default behavior to automatically normalize line endings.
-###############################################################################
-* text=auto
+#include <iostream>
+#include <cmath>
+#include <locale.h> // Türkçe karakter desteği için
 
-###############################################################################
-# Set default behavior for command prompt diff.
-#
-# This is need for earlier builds of msysgit that does not have it on by
-# default for csharp files.
-# Note: This is only used by command line
-###############################################################################
-#*.cs     diff=csharp
+using namespace std;
 
-###############################################################################
-# Set the merge driver for project and solution files
-#
-# Merging from the command prompt will add diff markers to the files if there
-# are conflicts (Merging from VS is not affected by the settings below, in VS
-# the diff markers are never inserted). Diff markers may cause the following 
-# file extensions to fail to load in VS. An alternative would be to treat
-# these files as binary and thus will always conflict and require user
-# intervention with every merge. To do so, just uncomment the entries below
-###############################################################################
-#*.sln       merge=binary
-#*.csproj    merge=binary
-#*.vbproj    merge=binary
-#*.vcxproj   merge=binary
-#*.vcproj    merge=binary
-#*.dbproj    merge=binary
-#*.fsproj    merge=binary
-#*.lsproj    merge=binary
-#*.wixproj   merge=binary
-#*.modelproj merge=binary
-#*.sqlproj   merge=binary
-#*.wwaproj   merge=binary
+#define PI 3.14159
 
-###############################################################################
-# behavior for image files
-#
-# image files are treated as binary by default.
-###############################################################################
-#*.jpg   binary
-#*.png   binary
-#*.gif   binary
+int main() {
+    setlocale(LC_ALL, "Turkish"); // Türkçe karakter desteği
+    
+    char tekrar;
 
-###############################################################################
-# diff behavior for common document formats
-# 
-# Convert binary document formats to text before diffing them. This feature
-# is only available from the command line. Turn it on by uncommenting the 
-# entries below.
-###############################################################################
-#*.doc   diff=astextplain
-#*.DOC   diff=astextplain
-#*.docx  diff=astextplain
-#*.DOCX  diff=astextplain
-#*.dot   diff=astextplain
-#*.DOT   diff=astextplain
-#*.pdf   diff=astextplain
-#*.PDF   diff=astextplain
-#*.rtf   diff=astextplain
-#*.RTF   diff=astextplain
+    do {
+        double r;
+        cout << "Cemberin yaricapini giriniz: ";
+        cin >> r;
+
+        cout << "Cemberin cevresi icin 'c'" << endl;
+        cout << "Cemberin alani icin 'a'" << endl;
+        
+        char secim; 
+        while (true) {
+            cout << "Seciminizi yapiniz (c/a): ";
+            cin >> secim;
+            
+            if (secim == 'c' || secim == 'C') {
+                double cevre = 2 * PI * r;
+                cout << "Cemberin cevresi: " << cevre << endl;
+                break;
+            } else if (secim == 'a' || secim == 'A') {
+                double alan = PI * pow(r, 2);
+                cout << "Cemberin alani: " << alan << endl;
+                break;
+            } else {
+                cout << "Gecersiz secim. Lutfen tekrar deneyiniz." << endl;
+            }
+        }
+
+        // Kullanıcıya yeniden başlamak isteyip istemediği soruluyor
+        cout << "\nYeniden baslamak istiyor musunuz? (E/H): ";
+
+
+    } while (tekrar == 'E' || tekrar == 'e'); // E veya e girildiği sürece başa döner
+
+    cout << "\nProgram tamamlandi. Cikmak icin Enter tusuna basiniz..." << endl;
+    
+    cin.ignore(10000, '\n'); // Tamponu temizler
+    cin.get(); // Tuşa basılmasını bekler
+
+    return 0;
+}
